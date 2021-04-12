@@ -38,10 +38,13 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener{
             if(button.text.toString() == "Apply") {
                 val userInputtedText = etUserName.text.toString()
-                tvUserName.text = userInputtedText
-                etUserName.visibility = View.GONE
-                tvUserName.visibility = View.VISIBLE
-                button.text = "Change user"
+                if(userInputtedText != "") {
+                    tvUserName.text = userInputtedText
+                    etUserName.visibility = View.GONE
+                    tvUserName.visibility = View.VISIBLE
+                    button.text = "Change user"
+                }
+
             } else {
                 etUserName.visibility = View.VISIBLE
                 tvUserName.visibility = View.GONE

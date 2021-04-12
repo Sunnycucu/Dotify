@@ -14,13 +14,12 @@
         android:layout_height="wrap_content"
         android:text="sunny121"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0"
+
+
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@id/button"
+        app:layout_constraintBottom_toBottomOf="@id/button" />
 
     <EditText
         android:id="@+id/etUserName"
@@ -28,20 +27,17 @@
         android:layout_height="wrap_content"
         android:text="sunny121"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toStartOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintTop_toTopOf="@id/button"
+        app:layout_constraintBottom_toBottomOf="@id/button"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change user"
-
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +46,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="button, tvUserName"
+        app:constraint_referenced_ids="button, tvUserName, etUserName"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="64dp">
 
@@ -58,8 +54,9 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,30 +88,39 @@
 
     <TextView
         android:id="@+id/tvNumberSongs"
+        android:padding="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="3423 plays"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvArtist" />
+        app:layout_constraintTop_toBottomOf="@+id/tvArtist"
+        />
 
     <ImageView
         android:id="@+id/ivPlay"
+        android:layout_width="130dp"
+
+        android:layout_height="130dp"
         android:onClick="playButtonClicked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvNumberSongs"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_play" />
 
     <ImageView
         android:id="@+id/ivNext"
-        android:layout_width="46dp"
-        android:layout_height="52dp"
+        android:padding="16dp"
+        android:layout_width="92dp"
+
+        android:layout_height="87dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivPlay"
@@ -124,8 +130,10 @@
 
     <ImageView
         android:id="@+id/ivPrev"
-        android:layout_width="57dp"
-        android:layout_height="52dp"
+        android:padding="16dp"
+        android:layout_width="92dp"
+
+        android:layout_height="87dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivPlay"
         app:layout_constraintStart_toStartOf="parent"
