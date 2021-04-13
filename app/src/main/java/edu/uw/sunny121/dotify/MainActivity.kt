@@ -1,5 +1,6 @@
 package edu.uw.sunny121.dotify
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var etUserName : EditText
     private lateinit var tvUserName : TextView
     private lateinit var button : Button
-
+    private lateinit var imageView3 : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +33,15 @@ class MainActivity : AppCompatActivity() {
         etUserName = findViewById(R.id.etUserName)
         tvUserName = findViewById(R.id.tvUserName)
         button = findViewById(R.id.button)
+        imageView3 = findViewById(R.id.imageView3)
 
         etUserName.visibility = View.GONE
+
+
+
+        imageView3.setOnLongClickListener {
+            coverImageLongClicked()
+        }
 
         button.setOnClickListener{
             if(button.text.toString() == "Apply") {
@@ -74,5 +82,10 @@ class MainActivity : AppCompatActivity() {
 
     fun nextButtonClicked() {
         Toast.makeText(this,"Skipping to next track", Toast.LENGTH_SHORT).show()
+    }
+
+    fun coverImageLongClicked() : Boolean {
+        tvNumberSongs.setTextColor(Color.parseColor("#e65a8d"))
+        return true
     }
 }
