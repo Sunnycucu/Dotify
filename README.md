@@ -10,4 +10,4 @@
 2. Long pressing on the cover image changes the text color of the play count to a different color. (+ 0.25)
 3. If using ConstraintLayout, utilize a Barrier or Guideline somewhere with a view constrained to it (+0.25)
 
-!(image.jpg)
+![alt text](./app/src/main/res/drawable/screenshot.png)
