@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.view.isVisible
+import edu.uw.sunny121.dotify.databinding.ActivityMainBinding
 import org.w3c.dom.Text
 import kotlin.random.Random
 
@@ -21,8 +22,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var button : Button
     private lateinit var imageView3 : ImageView
 
+
+    private lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater).apply{setContentView(root)}
+
         setContentView(R.layout.activity_main)
         tvNumberSongs = findViewById(R.id.tvNumberSongs)
 
