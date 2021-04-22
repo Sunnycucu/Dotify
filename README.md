@@ -7,10 +7,10 @@
 **Extra credits I have done**
 
 none
-![alt text](./app/screenshots/hw2-0.jpg)
+![alt text](./app/screenshots/hw2-1.jpg)
 when opened
 
-![alt text](./app/screenshots/hw2-1.jpg)
+![alt text](./app/screenshots/hw2-0.jpg)
 clicked on song
 
 ![alt text](./app/screenshots/hw2-2.jpg)
