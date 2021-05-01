@@ -18,17 +18,17 @@ class SongListActivity : AppCompatActivity() {
         binding = ActivitySongListBinding.inflate(layoutInflater).apply{setContentView(root)}
 
         with(binding) {
-            if (savedInstanceState != null) {
-                // recreating the activity because it has saveInstanceState
-                var savedSong = savedInstanceState.getParcelable<Song>(SONG_KEY)
-                if (savedSong != null) {
-                    navigateToMainActivity(this@SongListActivity, savedSong)
-                }
-            }
+
+
             val adapter = SongListAdapter(SongDataProvider.getAllSongs())
             rvSongs.adapter = adapter
-
-            miniPlayer.visibility = View.GONE
+            if (savedInstanceState != null) {
+                var savedSong = savedInstanceState.getParcelable<Song>(SONG_KEY)
+                miniPlayer.visibility = View.VISIBLE
+                tvMini.text = savedSong?.title + " - " + savedSong?.artist
+            } else {
+                miniPlayer.visibility = View.GONE
+            }
             adapter.onSongClickListner = {position, song ->
                 miniPlayer.visibility = View.VISIBLE
                 tvMini.text = song.title + " - " + song.artist
