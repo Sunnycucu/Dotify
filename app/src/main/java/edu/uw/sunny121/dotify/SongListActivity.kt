@@ -9,14 +9,22 @@ import edu.uw.sunny121.dotify.databinding.ActivitySongListBinding
 import android.content.Context
 
 class SongListActivity : AppCompatActivity() {
-
+    private val SONG_KEY = "SONG_KEY"
     private lateinit var binding : ActivitySongListBinding
     private lateinit var songObject : Song
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySongListBinding.inflate(layoutInflater).apply{setContentView(root)}
 
         with(binding) {
+            if (savedInstanceState != null) {
+                // recreating the activity because it has saveInstanceState
+                var savedSong = savedInstanceState.getParcelable<Song>(SONG_KEY)
+                if (savedSong != null) {
+                    navigateToMainActivity(this@SongListActivity, savedSong)
+                }
+            }
             val adapter = SongListAdapter(SongDataProvider.getAllSongs())
             rvSongs.adapter = adapter
 
@@ -30,11 +38,19 @@ class SongListActivity : AppCompatActivity() {
                 navigateToMainActivity(this@SongListActivity, songObject)
             }
 
+
+
             btnShuffle.setOnClickListener{
                 adapter.updateSong(SongDataProvider.getAllSongs().toMutableList().shuffled())
             }
         }
 
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        // Save data
+        outState.putParcelable(SONG_KEY, songObject)
+        super.onSaveInstanceState(outState)
     }
 }

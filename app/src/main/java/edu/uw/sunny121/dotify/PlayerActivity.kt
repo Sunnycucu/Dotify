@@ -27,7 +27,7 @@ fun navigateToMainActivity(context: Context, song: Song) = with(context) {
 }
 class MainActivity : AppCompatActivity() {
 
-
+    private val COUNT_PLAY_KEY = "COUNT_PLAY_KEY"
     private var randomNumber = Random.nextInt(1000, 10000)
     private lateinit var binding : ActivityMainBinding
 
@@ -38,11 +38,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).apply{setContentView(root)}
         with(binding) {
+
+            if (savedInstanceState != null) {
+                randomNumber = savedInstanceState.getInt(COUNT_PLAY_KEY, 4321)
+            }
             val song: Song? = intent.getParcelableExtra<Song>("song")
             tvTitle.text = song?.title
             tvArtist.text = song?.artist
             if(song?.largeImageID != null) {
                 imageView3.setImageResource(song.largeImageID)
+            }
+            val playTime : String = randomNumber.toString()
+            btSettings.setOnClickListener {
+                if (song != null) {
+                    nagivateToSettingsActivity(this@MainActivity, song, playTime)
+                }
+
             }
 
         }
@@ -53,12 +64,13 @@ class MainActivity : AppCompatActivity() {
 
         var ivPrev = binding.ivPrev
         var ivNext = binding.ivNext
-        var etUserName = binding.etUserName
-        var tvUserName = binding.tvUserName
-        var button = binding.button
+//        var etUserName = binding.etUserName
+//        var tvUserName = binding.tvUserName
+//        var button = binding.button
         var imageView3 = binding.imageView3
 
-        etUserName.visibility = View.GONE
+//        etUserName.visibility = View.GONE
+
 
 
 
@@ -66,23 +78,23 @@ class MainActivity : AppCompatActivity() {
             coverImageLongClicked()
         }
 
-        button.setOnClickListener{
-            if(button.text.toString() == "Apply") {
-                val userInputtedText = etUserName.text.toString()
-                if(userInputtedText != "") {
-                    tvUserName.text = userInputtedText
-                    etUserName.visibility = View.GONE
-                    tvUserName.visibility = View.VISIBLE
-                    button.text = "Change user"
-                }
-
-            } else {
-                etUserName.visibility = View.VISIBLE
-                tvUserName.visibility = View.GONE
-                button.text = "Apply"
-            }
-
-        }
+//        button.setOnClickListener{
+//            if(button.text.toString() == "Apply") {
+//                val userInputtedText = etUserName.text.toString()
+//                if(userInputtedText != "") {
+//                    tvUserName.text = userInputtedText
+//                    etUserName.visibility = View.GONE
+//                    tvUserName.visibility = View.VISIBLE
+//                    button.text = "Change user"
+//                }
+//
+//            } else {
+//                etUserName.visibility = View.VISIBLE
+//                tvUserName.visibility = View.GONE
+//                button.text = "Apply"
+//            }
+//
+//        }
 
         ivPrev.setOnClickListener{
             prevButtonClicked()
@@ -110,5 +122,11 @@ class MainActivity : AppCompatActivity() {
     private fun coverImageLongClicked() : Boolean {
         binding.tvNumberSongs.setTextColor(Color.parseColor("#e65a8d"))
         return true
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        // Save data
+        outState.putInt(COUNT_PLAY_KEY, randomNumber)
+        super.onSaveInstanceState(outState)
     }
 }
