@@ -48,10 +48,9 @@ class MainActivity : AppCompatActivity() {
             if(song?.largeImageID != null) {
                 imageView3.setImageResource(song.largeImageID)
             }
-            val playTime : String = randomNumber.toString()
             btSettings.setOnClickListener {
                 if (song != null) {
-                    nagivateToSettingsActivity(this@MainActivity, song, playTime)
+                    nagivateToSettingsActivity(this@MainActivity, song, randomNumber.toString())
                 }
 
             }
@@ -106,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun playButtonClicked(view: View) {
-        randomNumber += 1
+        randomNumber++
         binding.tvNumberSongs.text = "$randomNumber plays"
     }
     
