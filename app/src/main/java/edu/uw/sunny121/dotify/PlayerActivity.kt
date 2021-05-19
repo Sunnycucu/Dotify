@@ -28,19 +28,22 @@ fun navigateToMainActivity(context: Context, song: Song) = with(context) {
 class MainActivity : AppCompatActivity() {
 
     private val COUNT_PLAY_KEY = "COUNT_PLAY_KEY"
-    private var randomNumber = Random.nextInt(1000, 10000)
+    //private var randomNumber = Random.nextInt(1000, 10000)
     private lateinit var binding : ActivityMainBinding
+    lateinit var musicApp : MusicApplication
 
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater).apply{setContentView(root)}
+        musicApp = this.applicationContext as MusicApplication
+
+                binding = ActivityMainBinding.inflate(layoutInflater).apply{setContentView(root)}
         with(binding) {
 
             if (savedInstanceState != null) {
-                randomNumber = savedInstanceState.getInt(COUNT_PLAY_KEY, 4321)
+                musicApp.count = savedInstanceState.getInt(COUNT_PLAY_KEY, 4321)
             }
             val song: Song? = intent.getParcelableExtra<Song>("song")
             tvTitle.text = song?.title
@@ -50,16 +53,18 @@ class MainActivity : AppCompatActivity() {
             }
             btSettings.setOnClickListener {
                 if (song != null) {
-                    nagivateToSettingsActivity(this@MainActivity, song, randomNumber.toString())
+                    nagivateToSettingsActivity(this@MainActivity, song)
                 }
 
             }
 
         }
 
+
+
         var tvNumberSongs = binding.tvNumberSongs
 
-        tvNumberSongs.text = "$randomNumber plays"
+        tvNumberSongs.text = "${musicApp.count.toString()} plays"
 
         var ivPrev = binding.ivPrev
         var ivNext = binding.ivNext
@@ -105,8 +110,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun playButtonClicked(view: View) {
-        randomNumber++
-        binding.tvNumberSongs.text = "$randomNumber plays"
+        musicApp.count++
+        binding.tvNumberSongs.text = "${musicApp.count.toString()} plays"
     }
     
     private fun prevButtonClicked() {
@@ -125,7 +130,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         // Save data
-        outState.putInt(COUNT_PLAY_KEY, randomNumber)
+        outState.putInt(COUNT_PLAY_KEY, musicApp.count)
         super.onSaveInstanceState(outState)
     }
 }

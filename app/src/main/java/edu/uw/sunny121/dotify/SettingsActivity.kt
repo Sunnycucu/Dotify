@@ -13,10 +13,9 @@ import edu.uw.sunny121.dotify.databinding.ActivitySettingsBinding
 private const val SONG_KEY = "song"
 private const val PLAYTIME_KEY = "playtime"
 
-fun nagivateToSettingsActivity(context: Context, song: Song, playTime: String) = with(context) {
+fun nagivateToSettingsActivity(context: Context, song: Song) = with(context) {
     startActivity(Intent(this, SettingsActivity::class.java).apply {
         putExtra(SONG_KEY, song)
-        putExtra(PLAYTIME_KEY, playTime)
     })
 
 }

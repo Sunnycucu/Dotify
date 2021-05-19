@@ -6,7 +6,7 @@ import android.view.View
 import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import edu.uw.sunny121.dotify.databinding.ActivitySongListBinding
-import android.content.Context
+import edu.uw.sunny121.dotify.adapter.SongListAdapter
 
 class SongListActivity : AppCompatActivity() {
     private val SONG_KEY = "SONG_KEY"

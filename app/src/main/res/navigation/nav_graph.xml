@@ -32,9 +32,6 @@
         <argument
             android:name="song"
             app:argType="com.ericchee.songdataprovider.Song" />
-        <argument
-            android:name="playtime"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/statisticsFragment"
@@ -44,8 +41,5 @@
         <argument
             android:name="song"
             app:argType="com.ericchee.songdataprovider.Song" />
-        <argument
-            android:name="playtime"
-            app:argType="string" />
     </fragment>
 </navigation>

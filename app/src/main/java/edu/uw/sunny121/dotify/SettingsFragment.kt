@@ -24,13 +24,12 @@ class SettingsFragment : Fragment() {
 
         with(binding) {
             val receivedSong : Song = safeArgs.song
-            val receivedPlaytime : String = safeArgs.playtime
             btProfile.setOnClickListener {
                 navController.navigate(R.id.profileFragment)
             }
 
             btStatistic.setOnClickListener {
-                navController.navigate(SettingsFragmentDirections.actionSettingsFragmentToStatisticsFragment(receivedSong, receivedPlaytime))
+                navController.navigate(SettingsFragmentDirections.actionSettingsFragmentToStatisticsFragment(receivedSong))
             }
 
             btAbout.setOnClickListener {

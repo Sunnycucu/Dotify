@@ -1,4 +1,4 @@
-package edu.uw.sunny121.dotify
+package edu.uw.sunny121.dotify.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
