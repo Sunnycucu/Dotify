@@ -7,9 +7,10 @@ import com.ericchee.songdataprovider.Song
 import com.ericchee.songdataprovider.SongDataProvider
 import edu.uw.sunny121.dotify.databinding.ActivitySongListBinding
 import edu.uw.sunny121.dotify.adapter.SongListAdapter
-
+const val SONG_INFO_KEY = "SONG_INFO_KEY"
 class SongListActivity : AppCompatActivity() {
     private val SONG_KEY = "SONG_KEY"
+
     private lateinit var binding : ActivitySongListBinding
     private lateinit var songObject : Song
 

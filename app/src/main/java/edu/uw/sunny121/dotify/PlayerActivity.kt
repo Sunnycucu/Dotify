@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     //private var randomNumber = Random.nextInt(1000, 10000)
     private lateinit var binding : ActivityMainBinding
     lateinit var musicApp : MusicApplication
-
+    private val increasePlayTimeManager: IncreasePlayTimeManager by lazy { musicApp.increasePlaytimeManger }
 
 
 
@@ -56,6 +56,17 @@ class MainActivity : AppCompatActivity() {
                     nagivateToSettingsActivity(this@MainActivity, song)
                 }
 
+            }
+
+
+            if (switch1 != null) {
+                switch1.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+                    if (isChecked) {
+                        increasePlayTimeManager.startIncreasePlaytimePeriodically()
+                    } else {
+                        increasePlayTimeManager.stopPeriodicallyIncreasing()
+                    }
+                })
             }
 
         }
